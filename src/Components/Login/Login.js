@@ -49,13 +49,13 @@ export default function Login(props) {
                     <div className="form-group">
                         <input
                             type="text"
-                            name="username"
-                            placeholder="Username"
+                            name="Email Address"
+                            placeholder="Email Address"
                             value={usernameInput}
                             onChange={usernameChangeHandler}
                             onBlur={usernameBlurHandler}
                         ></input>
-                         {usernameInputError&&<p className="error">Enter a valid username</p>}
+                         {usernameInputError&&<p className="error">Enter a valid email address</p>}
                     </div>
                     <div className="form-group">
                     <input
