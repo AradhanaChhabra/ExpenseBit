@@ -6,7 +6,7 @@ export default function Register(props) {
     return (
         <div className="base-container" ref={props.containerRef}>
             <div className="header">
-                Register
+                REGISTER
             </div>
             <div className="content">
                 <div className="image">
@@ -14,15 +14,15 @@ export default function Register(props) {
                 </div>
                 <div className="form">
                     <div className="form-group">
-                        <label htmlFor="username">Username</label>
+                        {/* <label htmlFor="username">Username</label> */}
                         <input type="text" name="username" placeholder="Username"></input>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="email">Email Address</label>
+                        {/* <label htmlFor="email">Email Address</label> */}
                         <input type="email" name="email" placeholder="Email Address"></input>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="password">Password</label>
+                        {/* <label htmlFor="password">Password</label> */}
                         <input type="password" name="password" placeholder="Password"></input>
                     </div>
                 </div>

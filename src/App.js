@@ -18,7 +18,7 @@ function App() {
     }
     setIsLogin(prevState => !prevState);
   }
-  console.log(isLogin);
+  // console.log(isLogin);
 
   return (
     <div className="App">
