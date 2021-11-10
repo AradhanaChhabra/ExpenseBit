@@ -1,6 +1,6 @@
 import './App.scss';
 import Login from './Components/Login/Login';
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import Register from './Components/Login/Register';
 
 function App() {
