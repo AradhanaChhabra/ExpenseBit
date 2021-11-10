@@ -48,6 +48,7 @@ export default function Login(props) {
                 <div className="form">
                     <div className="form-group">
                         <input
+
                             type="email"
                             name="email"
                             placeholder="Email Address"
@@ -56,6 +57,7 @@ export default function Login(props) {
                             onBlur={emailBlurHandler}
                         />
                          {emailInputError&&<p className="error">Enter a valid email address</p>}
+
                     </div>
                     <div className="form-group">
                     <input
