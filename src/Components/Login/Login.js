@@ -49,7 +49,7 @@ export default function Login(props) {
                     <div className="form-group">
                         <input
                             type="text"
-                            name="Email Address"
+                            name="Email Addresss"
                             placeholder="Email Address"
                             value={usernameInput}
                             onChange={usernameChangeHandler}
