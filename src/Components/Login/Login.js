@@ -16,11 +16,9 @@ export default function Login(props) {
                 </div>
                 <div className="form">
                     <div className="form-group">
-                        {/* <label htmlFor="username">Username</label> */}
                         <input type="text" name="username" placeholder="Username"></input>
                     </div>
                     <div className="form-group">
-                        {/* <label htmlFor="password">Password</label> */}
                         <input type="password" name="password" placeholder="Password"></input>
                     </div>
                 </div>
