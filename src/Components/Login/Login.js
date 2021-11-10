@@ -5,13 +5,13 @@ import useInputValidation from '../../hooks/useInputValidation';
 
 export default function Login(props) {
     const {
-        value: usernameInput,
-        isValueValid: isUsernameValid,
-        toShowError: usernameInputError,
-        valueChangeHandler: usernameChangeHandler,
-        onBlurHandler: usernameBlurHandler,
-        reset: resetUsernameInput
-    } = useInputValidation(value => value.trim() !== "");
+        value: emailInput,
+        isValueValid: isEmailValid,
+        toShowError: emailInputError,
+        valueChangeHandler: emailChangeHandler,
+        onBlurHandler: emailBlurHandler,
+        reset: resetEmailInput,
+    } = useInputValidation(value => value.trim() !== "" && value.includes('@'));
 
     const {
         value: passwordInput,
@@ -25,12 +25,12 @@ export default function Login(props) {
     const loginHandler = (event) => {
         event.preventDefault();
 
-        if (isUsernameValid && isPasswordValid) {
+        if (isEmailValid && isPasswordValid) {
             console.log("Logged In");
         }
         else console.log("INVALID")
 
-        resetUsernameInput();
+        resetEmailInput();
         resetPasswordInput();
     }
 
@@ -48,14 +48,16 @@ export default function Login(props) {
                 <div className="form">
                     <div className="form-group">
                         <input
-                            type="text"
-                            name="Email Addresss"
+
+                            type="email"
+                            name="email"
                             placeholder="Email Address"
-                            value={usernameInput}
-                            onChange={usernameChangeHandler}
-                            onBlur={usernameBlurHandler}
-                        ></input>
-                         {usernameInputError&&<p className="error">Enter a valid email address</p>}
+                            value={emailInput}
+                            onChange={emailChangeHandler}
+                            onBlur={emailBlurHandler}
+                        />
+                         {emailInputError&&<p className="error">Enter a valid email address</p>}
+
                     </div>
                     <div className="form-group">
                     <input
