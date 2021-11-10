@@ -50,7 +50,7 @@ export default function Login(props) {
                         <input
                             type="text"
                             name="username"
-                            placeholder="Username"
+                            placeholder="Email Address"
                             value={usernameInput}
                             onChange={usernameChangeHandler}
                             onBlur={usernameBlurHandler}
