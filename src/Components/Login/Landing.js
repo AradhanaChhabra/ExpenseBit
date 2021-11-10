@@ -5,9 +5,9 @@ import Login from './Login';
 
 export default function Landing() {
     const [isLogin, setIsLogin] = useState(true);
-  const [rightsideCLass, setrightsideCLass] = useState(`right-side right`);
-  const current = isLogin ? "Register" : "Login";
-  const currentActive = isLogin ? "login" : "register";
+    const [rightsideCLass, setrightsideCLass] = useState(`right-side right`);
+    const current = isLogin ? "Register" : "Login";
+    const currentActive = isLogin ? "login" : "register";
 
   const changeState=()=> {
     if (isLogin) {

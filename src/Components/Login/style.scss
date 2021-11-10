@@ -6,7 +6,7 @@
     align-items: center;
   
     .header {
-      font-size: 24px;
+      font-size: 20px;
     }
   
     .content {
@@ -37,8 +37,18 @@
           label {
             font-size: 15px;
           }
+          .error{
+        //     margin-top: 6px;
+            display: flex;
+            flex-direction: column;
+            min-width: 12em;
+            height: 14px;
+            font-size: 12px; 
+            color: red;
+            margin-top:0;
+          }
           input {
-            margin-top: 6px;
+            margin-top: 3px;
             min-width: 18em;
             height: 37px;
             padding: 0px 10px;
@@ -66,4 +76,25 @@
     .footer {
       margin-top: 3em;
     }
+    //Button
+.btn {
+    position:absolute;
+    bottom: 1em;
+    left:180px;
+    justify-self: center;
+    font-size: 19px;
+    padding: 7px 20px;
+    border: 0;
+    background-color: #3498db;
+    color: #fff;
+    border-radius: 3px;
+    transition: all 250ms ease-in-out;
+    cursor: pointer;
+    &:hover {
+        background-color: #2386c8;
+    }
+    &:focus {
+        outline: none;
+  }
+}
   }
