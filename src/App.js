@@ -1,7 +1,8 @@
 import './App.scss';
-import Landing from './Components/Login/Landing';
+//import Landing from './Components/Login/Landing';
 import firebase from 'firebase';
 import  firebaseConfig  from '../src/utils/firebase'
+import { Sidebar } from './Components/Sidebar/Sidebar';
 
 function App() {
 
@@ -10,8 +11,6 @@ function App() {
 
   if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
-    
-    
  }else {
     firebase.app(); // if already initialized, use that one
  }
@@ -19,7 +18,8 @@ function App() {
 
   return (
     <div className="App">
-      <Landing/>
+      {/* <div className="LandingApp"><Landing /></div> */}
+      <Sidebar/>
     </div>
   );
 }
