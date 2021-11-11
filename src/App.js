@@ -1,12 +1,14 @@
 import './App.scss';
-import Landing from './Components/Login/Landing';
+import Home from './Components/home/Home';
+// import Landing from './Components/Login/Landing';
 
 function App() {
   
 
   return (
     <div className="App">
-      <Landing/>
+      {/* <div className="LandingApp"><Landing /></div> */}
+      <Home/>
     </div>
   );
 }
