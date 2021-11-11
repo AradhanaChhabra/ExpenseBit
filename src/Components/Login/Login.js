@@ -2,16 +2,17 @@ import React from 'react'
 import finance from '../../assests/wallet.svg'
 import "../Login/style.scss"
 import useInputValidation from '../../hooks/useInputValidation';
+import * as firebase from 'firebase'
 
 export default function Login(props) {
     const {
-        value: usernameInput,
-        isValueValid: isUsernameValid,
-        toShowError: usernameInputError,
-        valueChangeHandler: usernameChangeHandler,
-        onBlurHandler: usernameBlurHandler,
-        reset: resetUsernameInput
-    } = useInputValidation(value => value.trim() !== "");
+        value: emailInput,
+        isValueValid: isEmailValid,
+        toShowError: emailInputError,
+        valueChangeHandler: emailChangeHandler,
+        onBlurHandler: emailBlurHandler,
+        reset: resetEmailInput,
+    } = useInputValidation(value => value.trim() !== "" && value.includes('@'));
 
     const {
         value: passwordInput,
@@ -25,12 +26,20 @@ export default function Login(props) {
     const loginHandler = (event) => {
         event.preventDefault();
 
-        if (isUsernameValid && isPasswordValid) {
-            console.log("Logged In");
+        if (isEmailValid && isPasswordValid) {
+            firebase.auth().signInWithEmailAndPassword(emailInput, passwordInput)
+            .then((userCredential) => {
+            // Signed in
+            console.log(userCredential)
+            // ...
+        })
+        .catch((error) => {
+           console.log(error)
+        });
         }
         else console.log("INVALID")
 
-        resetUsernameInput();
+        resetEmailInput();
         resetPasswordInput();
     }
 
@@ -48,14 +57,16 @@ export default function Login(props) {
                 <div className="form">
                     <div className="form-group">
                         <input
-                            type="text"
-                            name="username"
+
+                            type="email"
+                            name="email"
                             placeholder="Email Address"
-                            value={usernameInput}
-                            onChange={usernameChangeHandler}
-                            onBlur={usernameBlurHandler}
-                        ></input>
-                         {usernameInputError&&<p className="error">Enter a valid username</p>}
+                            value={emailInput}
+                            onChange={emailChangeHandler}
+                            onBlur={emailBlurHandler}
+                        />
+                         {emailInputError&&<p className="error">Enter a valid email address</p>}
+
                     </div>
                     <div className="form-group">
                     <input
