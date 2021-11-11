@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import finance from '../../assests/wallet.svg'
 import "../Login/style.scss"
 import useInputValidation from '../../hooks/useInputValidation';
+import * as firebase from 'firebase'
 
 export default function Register(props) {
     // validating form inputs using custom hook
@@ -36,16 +37,19 @@ export default function Register(props) {
     const registerHandler = (event) => {
         event.preventDefault();
         // overall form validity
-        if (isUsernameValid && isEmailValid && isPasswordValid) {
-            console.log("Registered");
-        }
-        else {
-            console.log("Form Invalid");
-        }
+        firebase.auth().createUserWithEmailAndPassword(emailInput, passwordInput)
+  .then((userCredential) => {
+    console.log(userCredential)
+  })
+  .catch((error) => {
+    console.log(error)
+  });
         resetUsernameInput();
         resetEmailInput();
         resetPasswordInput();
     }
+
+      
 
     return (
         <div className="base-container" ref={props.containerRef}>

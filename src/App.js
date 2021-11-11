@@ -1,7 +1,7 @@
 import './App.scss';
 import Landing from './Components/Login/Landing';
 import firebase from 'firebase';
-import { firebaseConfig } from '../src/utils/firebase'
+import  firebaseConfig  from '../src/utils/firebase'
 
 function App() {
 
