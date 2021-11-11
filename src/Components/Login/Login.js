@@ -2,6 +2,7 @@ import React from 'react'
 import finance from '../../assests/wallet.svg'
 import "../Login/style.scss"
 import useInputValidation from '../../hooks/useInputValidation';
+import * as firebase from 'firebase'
 
 export default function Login(props) {
     const {
@@ -26,7 +27,15 @@ export default function Login(props) {
         event.preventDefault();
 
         if (isEmailValid && isPasswordValid) {
-            console.log("Logged In");
+            firebase.auth().signInWithEmailAndPassword(emailInput, passwordInput)
+            .then((userCredential) => {
+            // Signed in
+            console.log(userCredential)
+            // ...
+        })
+        .catch((error) => {
+           console.log(error)
+        });
         }
         else console.log("INVALID")
 
