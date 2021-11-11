@@ -1,6 +1,7 @@
  const firebaseConfig = {
     apiKey: "AIzaSyB4evJj0ZlngwbZODUM_JaWpb7T8IFkwhg",
     authDomain: "waysandmeans.firebaseapp.com",
+    databaseURL:"https://waysandmeans-default-rtdb.firebaseio.com/",
     projectId: "waysandmeans",
     storageBucket: "waysandmeans.appspot.com",
     messagingSenderId: "308195561949",

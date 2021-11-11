@@ -44,6 +44,14 @@ export default function Register(props) {
   .catch((error) => {
     console.log(error)
   });
+
+    //storing username
+    const UserRef = firebase.database().ref('Todo');
+        const user = {
+            usernameInput,
+        };
+    UserRef.push(user);
+    
         resetUsernameInput();
         resetEmailInput();
         resetPasswordInput();
