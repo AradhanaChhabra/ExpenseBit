@@ -38,12 +38,12 @@ const Audit = () => {
 
     return (
         <div>
-         <Typography variant="h2" component="h2" style={{marginBottom:"5%"}}>
+         <Typography variant="h2" component="h2" style={{marginBottom:"3%", textAlign:'left'}}>
             Audit Log
         </Typography>
             <Paper >
         <TableContainer component={Paper} >
-      <Table sx={{ minWidth: 1200, minHeight: 400 }} aria-label="simple table" >
+      <Table sx={{ minWidth: 1500, minHeight: 400 }} aria-label="simple table" >
         <TableHead>
           <TableRow>
             <TableCell>Dessert (100g serving)</TableCell>
