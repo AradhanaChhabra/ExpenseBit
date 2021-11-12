@@ -52,6 +52,17 @@ const SidebarContainer = styled.div`
   position: relative;
 `;
 
+const Container = styled.div`
+  position: fixed;
+  .active {
+    border-right: 4px solid var(--white);
+    img {
+      filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg)
+        brightness(103%) contrast(103%);
+    }
+  }
+`;
+
 const Logo = styled.div`
   width: 2rem;
   img {
@@ -184,6 +195,7 @@ export const Sidebar = () => {
     const handleProfileClick = () => setprofileClick(!profileClick);
     return (
         <>
+        <Container>
             <Button clicked={click} onClick={() => handleClick()}>Click</Button>
             <SidebarContainer>
                 <Logo>
@@ -207,11 +219,17 @@ export const Sidebar = () => {
                             <h4>Username</h4>
                         </Name>
                         <Logout>
+                            <div onClick={(e)=>{
+                             e.preventDefault();
+                             localStorage.setItem('logged', false)
+                            }}>
                             <img src={poweroff} alt="Logout"/>
+                            </div>
                         </Logout>
                     </Details>
                     </Profile>
                 </SidebarContainer>
+                </Container>
         </>
     )
 }

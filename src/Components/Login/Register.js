@@ -40,6 +40,7 @@ export default function Register(props) {
         firebase.auth().createUserWithEmailAndPassword(emailInput, passwordInput)
   .then((userCredential) => {
     console.log(userCredential)
+    localStorage.setItem('logged', true)
   })
   .catch((error) => {
     console.log(error)
@@ -51,6 +52,12 @@ export default function Register(props) {
             usernameInput,
         };
     UserRef.push(user);
+
+    // const todoRef = firebase.database().ref('Todo');
+    // todoRef.on('value', (snapshot) => {
+    //   const todos = snapshot.val();
+    //     console.log(todos)
+    // });
     
         resetUsernameInput();
         resetEmailInput();
