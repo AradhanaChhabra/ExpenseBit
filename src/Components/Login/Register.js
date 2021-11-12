@@ -45,7 +45,6 @@ export default function Register(props) {
         reset: resetPasswordInput
     } = useInputValidation(value => value.trim().length>6);
 
-
     const registerHandler = (event) => {
         event.preventDefault();
         var uid;
