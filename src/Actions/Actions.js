@@ -28,3 +28,12 @@ export const username = (id) => async (dispatch)=>{
     })
 }
 }
+
+export const expense = (data,tranID,uid) => async (dispatch)=>{
+
+    firebase.database().ref(`/expense/`).child(uid).child(tranID)
+            .set({
+                data
+            })
+
+}

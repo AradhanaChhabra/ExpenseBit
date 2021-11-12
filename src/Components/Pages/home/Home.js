@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import './home.css'
+import { Link } from 'react-router-dom'
 
 
 export default function Home() {
@@ -19,12 +20,16 @@ export default function Home() {
                 </div>
             </div>
             <div className="buttons">
+                <Link to="/expense">
                 <button className="homebtn">
                     + New Expense
                 </button>
+                </Link>
+                <Link to="/assets">
                 <button className="homebtn">
                     + New Deposit
                 </button>
+                </Link>
             </div>
         </div>
     )
