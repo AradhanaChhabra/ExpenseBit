@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.scss';
 import Landing from './Components/Login/Landing';
-import firebase, { auth } from 'firebase';
+import firebase from 'firebase';
 import  firebaseConfig  from '../src/utils/firebase'
 import { Sidebar } from './Components/Sidebar/Sidebar';
 import Audit from '../src/Components/Pages/Audit'
