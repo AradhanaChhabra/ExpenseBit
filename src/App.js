@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.scss';
 import Landing from './Components/Login/Landing';
-import firebase from 'firebase';
+import firebase, { auth } from 'firebase';
 import  firebaseConfig  from '../src/utils/firebase'
 import { Sidebar } from './Components/Sidebar/Sidebar';
 import Audit from '../src/Components/Pages/Audit'
@@ -10,6 +10,7 @@ import { Route, Switch, useLocation } from "react-router-dom";
 import Deposit from '../src/Components/Pages/home/Deposit'
 import Expense from '../src/Components/Pages/home/Expense';
 import Home from '../src/Components/Pages/home/Home'
+import { useSelector } from 'react-redux';
 
 const Pages = styled.div`
   width: 100vw;
@@ -34,7 +35,7 @@ const Pages = styled.div`
 
 function App() {
   
-  const logged = true;
+  const authenticate = useSelector((state)=>state.authenticate)
 
   if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
@@ -42,6 +43,8 @@ function App() {
     firebase.app(); // if already initialized, use that one
  }
   
+
+  console.log(authenticate)
 
   const location = useLocation();
   
@@ -65,8 +68,8 @@ function App() {
 
   return(
     <div className="App" >
-      {logged && sidebar}
-      {!logged && landing}
+      {authenticate && sidebar}
+      {!authenticate && landing}
   </div>
   )
   
