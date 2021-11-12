@@ -1,11 +1,16 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import './home.css'
 
+
 export default function Home() {
+
+    const username = useSelector((state)=>state.username)
+
     return (
         <div >
             <div className="homediv">
-                <h1>Welcome Username!</h1>
+                <h1>Welcome {username}!</h1>
                 <hr className="homehr"/>
                 
                 <div className="balance">
