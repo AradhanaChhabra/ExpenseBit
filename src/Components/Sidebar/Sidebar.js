@@ -6,7 +6,7 @@ import audit from '../../assests/audit.svg';
 import user from '../../assests/user1.svg';
 import poweroff from '../../assests/poweroff.svg';
 import styled from "styled-components";
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 const Button = styled.button`
   background-color: var(--blue);
@@ -88,7 +88,7 @@ const SlickBar = styled.ul`
   border-radius: 0 30px 30px 0;
 `;
 
-const Item = styled.li`
+const Item = styled(NavLink)`
   text-decoration: none;
   color: var(--white);
   width: 100%;
@@ -203,18 +203,14 @@ export const Sidebar = () => {
                     <img src={logo} alt="logo"/>
                 </Logo>
                 <SlickBar clicked={click}>
-                  <Link to="/" className="linkDiv">
-                    <Item>
+                    <Item onClick={()=>setClick(false)} exact activeClassName="active" to="/">
                         <img src={home} alt="home"></img>
                         <Text clicked={click}>Home</Text>
                     </Item>
-                    </Link>
-                    <Link to="/auditlog" className="linkDiv" >
-                    <Item>
+                    <Item onClick={()=>setClick(false)} activeClassName="active" to="/auditlog">
                         <img src={audit} alt="Audit"></img>
                         <Text clicked={click}>Audit</Text>
                     </Item>
-                    </Link>
                 </SlickBar>
 
                 <Profile clicked={profileClick}>
