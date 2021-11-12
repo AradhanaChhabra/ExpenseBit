@@ -6,6 +6,7 @@ import audit from '../../assests/audit.svg';
 import user from '../../assests/user1.svg';
 import poweroff from '../../assests/poweroff.svg';
 import styled from "styled-components";
+import { Link } from 'react-router-dom'
 
 const Button = styled.button`
   background-color: var(--blue);
@@ -202,14 +203,18 @@ export const Sidebar = () => {
                     <img src={logo} alt="logo"/>
                 </Logo>
                 <SlickBar clicked={click}>
+                  <Link to="/" className="linkDiv">
                     <Item>
                         <img src={home} alt="home"></img>
                         <Text clicked={click}>Home</Text>
                     </Item>
+                    </Link>
+                    <Link to="/auditlog" className="linkDiv" >
                     <Item>
                         <img src={audit} alt="Audit"></img>
                         <Text clicked={click}>Audit</Text>
                     </Item>
+                    </Link>
                 </SlickBar>
 
                 <Profile clicked={profileClick}>

@@ -11,8 +11,29 @@ import Deposit from '../src/Components/Pages/home/Deposit'
 import Expense from '../src/Components/Pages/home/Expense';
 import Home from '../src/Components/Pages/home/Home'
 
-function App() {
+const Pages = styled.div`
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  h1 {
+    font-size: calc(2rem + 2vw);
+    background: linear-gradient(to right, #118df0 30%,#091227 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  h2 {
+    font-size: calc(2rem + 2vw);
+    background: linear-gradient(to right,  #118df0 5%,#091227 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+ `;
 
+
+function App() {
+  
   const logged = true;
 
   if (!firebase.apps.length) {
@@ -21,30 +42,11 @@ function App() {
     firebase.app(); // if already initialized, use that one
  }
   
- const Pages = styled.div`
- width: 100vw;
- height: 100vh;
- display: flex;
- justify-content: center;
- align-items: center;
- h1 {
-   font-size: calc(2rem + 2vw);
-   background: linear-gradient(to right, #803bec 30%, #1b1b1b 100%);
-   -webkit-background-clip: text;
-   -webkit-text-fill-color: transparent;
- }
-`;
 
-const location = useLocation();
-
-
-
-
-if(logged)
-{
-  return(
-    <div className="App" >
-      <Sidebar/>
+  const location = useLocation();
+  
+  const sidebar = <>
+    <Sidebar/>
     <Pages>
       {/* <AnimatePresence exitBeforeEnter> */}
         <Switch location={location} key={location.pathname}>
@@ -55,24 +57,19 @@ if(logged)
         </Switch>
       {/* </AnimatePresence> */}
     </Pages>
-  </div>
-  )
-}
+  </>
 
-else {
+  const landing=<div className="LandingApp"><Landing/></div>
+
+
+
   return(
     <div className="App" >
-      <div className="LandingApp">
-    <Landing/>
-    </div>
-
+      {logged && sidebar}
+      {!logged && landing}
   </div>
   )
-}
   
 }
-
-
-
 
 export default App;
