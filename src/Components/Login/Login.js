@@ -4,7 +4,7 @@ import "../Login/style.scss"
 import useInputValidation from '../../hooks/useInputValidation';
 import * as firebase from 'firebase'
 import { useDispatch } from 'react-redux';
-import { authenticate } from '../../Actions/Actions';
+import { authenticate,userid,username } from '../../Actions/Actions';
 
 export default function Login(props) {
 
@@ -37,6 +37,8 @@ export default function Login(props) {
             // Signed in
             console.log(userCredential)
             dispatch(authenticate())
+            dispatch(userid(userCredential.uid))
+            dispatch(username(userCredential.uid))
             // ...
         })
         .catch((error) => {

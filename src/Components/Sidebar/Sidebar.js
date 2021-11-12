@@ -9,6 +9,7 @@ import styled from "styled-components";
 import { NavLink } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import {authenticate} from '../../Actions/Actions';
+import { useSelector } from 'react-redux';
 
 const Button = styled.button`
   background-color: var(--blue);
@@ -193,6 +194,7 @@ const Logout = styled.button`
 export const Sidebar = () => {
 
    const dispatch = useDispatch();
+   const username = useSelector((state)=>state.username)
 
     // manage button click state
     const [click, setClick] = useState(false);
@@ -222,7 +224,7 @@ export const Sidebar = () => {
                     <img src={user} alt="user" onClick={() => handleProfileClick()}></img>
                     <Details clicked={profileClick}>
                         <Name>
-                            <h4>Username</h4>
+                            <h4>{username}</h4>
                         </Name>
                         <Logout>
                             <div onClick={(e)=>{
