@@ -13,8 +13,6 @@ import Home from '../src/Components/Pages/home/Home'
 
 function App() {
 
-  const [logged,setLogged] = useState()
-
 
   if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
@@ -41,7 +39,7 @@ const location = useLocation();
 
 
 
-if(logged)
+if(localStorage.getItem('logged'))
 {
   return(
     <div className="App" >
