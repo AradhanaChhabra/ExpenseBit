@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from 'react';
+import React from 'react';
 import './App.scss';
 import Landing from './Components/Login/Landing';
 import firebase from 'firebase';
@@ -13,8 +13,7 @@ import Home from '../src/Components/Pages/home/Home'
 
 function App() {
 
-  const [logged,setLogged] = useState()
-
+  const logged = true;
 
   if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
@@ -63,7 +62,7 @@ if(logged)
 else {
   return(
     <div className="App" >
-    <div style={{position:"absolute",left:"37%"}}>
+      <div className="LandingApp">
     <Landing/>
     </div>
 

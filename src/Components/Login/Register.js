@@ -6,6 +6,7 @@ import * as firebase from 'firebase'
 
 export default function Register(props) {
     // validating form inputs using custom hook
+    const [isFormValid, setIsFormValid] = useState(true);
     const {
         value: usernameInput,
         isValueValid: isUsernameValid,
@@ -37,21 +38,27 @@ export default function Register(props) {
     const registerHandler = (event) => {
         event.preventDefault();
         // overall form validity
-        firebase.auth().createUserWithEmailAndPassword(emailInput, passwordInput)
-  .then((userCredential) => {
-    console.log(userCredential)
-    localStorage.setItem('logged', true)
-  })
-  .catch((error) => {
-    console.log(error)
-  });
+        setIsFormValid(isUsernameValid && isPasswordValid && isEmailValid);
+        if (isFormValid) {
+            firebase.auth().createUserWithEmailAndPassword(emailInput, passwordInput)
+                .then((userCredential) => {
+                    console.log(userCredential)
+                    localStorage.setItem('logged', true)
+                })
+                .catch((error) => {
+                    console.log(error)
+            });
 
-    //storing username
-    const UserRef = firebase.database().ref('Todo');
-        const user = {
-            usernameInput,
-        };
-    UserRef.push(user);
+            //storing username
+            const UserRef = firebase.database().ref('Todo');
+                const user = {
+                    usernameInput,
+                };
+            UserRef.push(user);
+        }
+        else {
+            setIsFormValid(false);
+        }
 
     // const todoRef = firebase.database().ref('Todo');
     // todoRef.on('value', (snapshot) => {
@@ -77,6 +84,7 @@ export default function Register(props) {
                     <img src={finance} alt="Finance" height="200px" width ="200px"/>
                 </div>
                 <div className="form">
+                    {!isFormValid&&<p className="error">Form Invalid. Try again.</p>}
                     <div className="form-group">
                         <input
                             type="text"
