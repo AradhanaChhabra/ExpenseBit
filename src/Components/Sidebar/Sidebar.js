@@ -6,6 +6,7 @@ import audit from '../../assests/audit.svg';
 import user from '../../assests/user1.svg';
 import poweroff from '../../assests/poweroff.svg';
 import styled from "styled-components";
+import { NavLink } from 'react-router-dom'
 
 const Button = styled.button`
   background-color: var(--blue);
@@ -52,6 +53,17 @@ const SidebarContainer = styled.div`
   position: relative;
 `;
 
+const Container = styled.div`
+  position: fixed;
+  .active {
+    border-right: 4px solid var(--white);
+    img {
+      filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg)
+        brightness(103%) contrast(103%);
+    }
+  }
+`;
+
 const Logo = styled.div`
   width: 2rem;
   img {
@@ -76,7 +88,7 @@ const SlickBar = styled.ul`
   border-radius: 0 30px 30px 0;
 `;
 
-const Item = styled.li`
+const Item = styled(NavLink)`
   text-decoration: none;
   color: var(--white);
   width: 100%;
@@ -184,17 +196,18 @@ export const Sidebar = () => {
     const handleProfileClick = () => setprofileClick(!profileClick);
     return (
         <>
+        <Container>
             <Button clicked={click} onClick={() => handleClick()}>Click</Button>
             <SidebarContainer>
                 <Logo>
                     <img src={logo} alt="logo"/>
                 </Logo>
                 <SlickBar clicked={click}>
-                    <Item>
+                    <Item onClick={()=>setClick(false)} exact activeClassName="active" to="/">
                         <img src={home} alt="home"></img>
                         <Text clicked={click}>Home</Text>
                     </Item>
-                    <Item>
+                    <Item onClick={()=>setClick(false)} activeClassName="active" to="/auditlog">
                         <img src={audit} alt="Audit"></img>
                         <Text clicked={click}>Audit</Text>
                     </Item>
@@ -207,11 +220,17 @@ export const Sidebar = () => {
                             <h4>Username</h4>
                         </Name>
                         <Logout>
+                            <div onClick={(e)=>{
+                             e.preventDefault();
+                             localStorage.setItem('logged', false)
+                            }}>
                             <img src={poweroff} alt="Logout"/>
+                            </div>
                         </Logout>
                     </Details>
                     </Profile>
                 </SidebarContainer>
+                </Container>
         </>
     )
 }

@@ -31,6 +31,7 @@ export default function Login(props) {
             .then((userCredential) => {
             // Signed in
             console.log(userCredential)
+            localStorage.setItem('logged', true)
             // ...
         })
         .catch((error) => {
