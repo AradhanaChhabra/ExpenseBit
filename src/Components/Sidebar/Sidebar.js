@@ -7,6 +7,8 @@ import user from '../../assests/user1.svg';
 import poweroff from '../../assests/poweroff.svg';
 import styled from "styled-components";
 import { NavLink } from 'react-router-dom'
+import { useDispatch } from 'react-redux';
+import {authenticate} from '../../Actions/Actions';
 
 const Button = styled.button`
   background-color: var(--blue);
@@ -189,6 +191,9 @@ const Logout = styled.button`
 
 
 export const Sidebar = () => {
+
+   const dispatch = useDispatch();
+
     // manage button click state
     const [click, setClick] = useState(false);
     const handleClick = () => setClick(!click);
@@ -221,8 +226,7 @@ export const Sidebar = () => {
                         </Name>
                         <Logout>
                             <div onClick={(e)=>{
-                             e.preventDefault();
-                             localStorage.setItem('logged', false)
+                             dispatch(authenticate())
                             }}>
                             <img src={poweroff} alt="Logout"/>
                             </div>
