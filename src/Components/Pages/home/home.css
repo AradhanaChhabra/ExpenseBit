@@ -1,0 +1,38 @@
+.buttons{
+    display: flex;
+      flex-direction: row;
+}
+.homediv{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-between;
+}
+.balance{
+    margin-left: 30px;
+}
+.homehr{
+    margin-left: 20px;
+    width: unset;
+}
+.homebtn{
+    font-family: "Open Sans", sans-serif;
+    width: 17em;
+      margin-top: 20px;
+      margin-right: 20px;
+    justify-self: center;
+    font-size: 19px;
+    padding: 12px 20px;
+    border: 1px;
+    background-color:#017fb1;
+    color: #fff;
+    border-radius: 3px;
+    transition: all 250ms ease-in-out;
+    cursor: pointer;
+  }
+  .homebtn:hover {
+    background-color: #8ca4b4;
+}
+.homebtn:focus {
+    outline: none;
+}
