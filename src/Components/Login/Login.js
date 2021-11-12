@@ -3,8 +3,13 @@ import finance from '../../assests/wallet.svg'
 import "../Login/style.scss"
 import useInputValidation from '../../hooks/useInputValidation';
 import * as firebase from 'firebase'
+import { useDispatch } from 'react-redux';
+import { authenticate } from '../../Actions/Actions';
 
 export default function Login(props) {
+
+    const dispatch = useDispatch();
+
     const {
         value: emailInput,
         isValueValid: isEmailValid,
@@ -31,7 +36,7 @@ export default function Login(props) {
             .then((userCredential) => {
             // Signed in
             console.log(userCredential)
-            localStorage.setItem('logged', true)
+            dispatch(authenticate())
             // ...
         })
         .catch((error) => {

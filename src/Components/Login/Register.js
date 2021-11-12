@@ -3,8 +3,14 @@ import finance from '../../assests/wallet.svg'
 import "../Login/style.scss"
 import useInputValidation from '../../hooks/useInputValidation';
 import * as firebase from 'firebase'
+import { useDispatch } from 'react-redux';
+import { authenticate } from '../../Actions/Actions';
+
 
 export default function Register(props) {
+
+    const dispatch = useDispatch();
+
     // validating form inputs using custom hook
     const [isFormValid, setIsFormValid] = useState(true);
     const {
@@ -43,7 +49,7 @@ export default function Register(props) {
             firebase.auth().createUserWithEmailAndPassword(emailInput, passwordInput)
                 .then((userCredential) => {
                     console.log(userCredential)
-                    localStorage.setItem('logged', true)
+                    dispatch(authenticate())
                 })
                 .catch((error) => {
                     console.log(error)
