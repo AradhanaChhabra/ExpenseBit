@@ -14,7 +14,6 @@ export default function Register(props) {
     
 
     const dispatch = useDispatch();
-    const [uid,setUid] = useState("")
 
     // validating form inputs using custom hook
     const [isFormValid, setIsFormValid] = useState(true);
@@ -47,7 +46,6 @@ export default function Register(props) {
 
     const registerHandler = (event) => {
         event.preventDefault();
-        var uid;
         // overall form validity
         setIsFormValid(isUsernameValid && isPasswordValid && isEmailValid);
         if (isFormValid) {
@@ -57,7 +55,6 @@ export default function Register(props) {
                     dispatch(authenticate())
                     dispatch(userid(userCredential.uid))
                     dispatch(username(userCredential.uid))
-                    setUid(userCredential.uid)
                     firebase.database().ref(`/Todo/`).child(userCredential.uid)
             .set({
                 usernameInput
