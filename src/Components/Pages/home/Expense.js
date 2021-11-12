@@ -1,11 +1,36 @@
-import React from 'react'
+import React,{ useState } from 'react'
 import './expense.css'
 import Paper from '@mui/material/Paper';
+import { useDispatch,useSelector } from 'react-redux';
+import { expense } from '../../../Actions/Actions';
 
 
 const Expense = () => {
+
+    const uid = useSelector((state)=>state.userid)
+    const dispatch = useDispatch();
+
+    const [payee,setPayee] = useState("")
+    const [date,setDate] = useState("")
+    const [amount,setAmount] = useState("")
+    const [memo,setMemo] = useState("")
+    const [file,setFile] = useState("")
+
     const addExpenseHandler = (event) => {
         event.preventDefault();
+
+        const Data = {
+            payee,
+            date,
+            amount,
+            memo,
+            file,
+        }
+
+        const tranID = `ID00${Math.floor(Math.random() * 100000)}`
+
+        dispatch(expense(Data,tranID,uid))
+        window.location.reload()
     }
     return (
         <>
@@ -17,25 +42,25 @@ const Expense = () => {
                     <div className="oneline">
                         <div className="form-field">
                             <label className="explabel" htmlFor="payee">Payee</label>
-                            <input className="expinput" type="text" name="payee" placeholder="Who did you pay?"/>
+                            <input className="expinput" type="text" name="payee" onChange={(e)=>setPayee(e.target.value)} placeholder="Who did you pay?"/>
                         </div>
                         <div className="form-field">
                             <label className="explabel" htmlFor="date">Date</label>
-                            <input className="expinput" type="date" name="date" placeholder="Date"/>
+                            <input className="expinput" type="date" name="date" onChange={(e)=>setDate(e.target.value)} placeholder="Date"/>
                         </div>
                         <div className="form-field">
                             <label className="explabel" htmlFor="Amount">Amount</label>
-                            <input className="expinput" type="number" name="Amount" />
+                            <input className="expinput" type="number" onChange={(e)=>setAmount(e.target.value)} name="Amount" />
                         </div>
                     </div>
                     <div className="oneline">
                         <div className="form-field">
                             <label className="explabel" htmlFor="memo">Memo</label>
-                            <input className="expinput" type="text" name="memo"/>
+                            <input className="expinput" type="text" onChange={(e)=>setMemo(e.target.value)} name="memo"/>
                         </div>
                         <div className="form-field">
                             <label className="explabel" htmlFor="Attachments">Attachments</label>
-                            <input className="expinput" type="file" name="attachments"/>
+                            <input className="expinput" type="file" onChange={(e)=>setFile(e.target.files[0])} name="attachments"/>
                         </div>
                     </div>
                 </div>
