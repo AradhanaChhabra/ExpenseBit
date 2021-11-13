@@ -19,15 +19,18 @@ const Expense = () => {
     const addExpenseHandler = (event) => {
         event.preventDefault();
 
+        const tranID = `ID00${Math.floor(Math.random() * 100000)}`
+
         const Data = {
             payee,
             date,
             amount,
             memo,
             file,
+            tranID
         }
 
-        const tranID = `ID00${Math.floor(Math.random() * 100000)}`
+       
 
         dispatch(expense(Data,tranID,uid))
         window.location.reload()
