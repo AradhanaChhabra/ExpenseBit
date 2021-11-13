@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Typography } from '@mui/material';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -8,8 +8,24 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import TablePagination from '@mui/material/TablePagination';
+import { useSelector,useDispatch } from 'react-redux';
+import { logs } from '../../Actions/Actions';
 
 const Audit = () => {
+
+  const dispatch = useDispatch();
+  const uid = useSelector((state)=>state.userid)
+  const logState = useSelector((state)=>state.logs)
+
+  const arr = []
+  Object.entries(logState).forEach((log)=>{
+    arr.push({...log})
+  })
+
+
+  useEffect(()=>{
+    dispatch(logs(uid))
+  },[uid,dispatch])
 
     const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -23,18 +39,6 @@ const Audit = () => {
     setPage(0);
   };
 
-    function createData(name, calories, fat, carbs, protein) {
-        return { name, calories, fat, carbs, protein };
-      }
-
-
-    const rows = [
-        createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-        createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-        createData('Eclair', 262, 16.0, 24, 6.0),
-        createData('Cupcake', 305, 3.7, 67, 4.3),
-        createData('Gingerbread', 356, 16.0, 49, 3.9),
-      ];
 
     return (
         <div className="mainAudit">
@@ -54,18 +58,18 @@ const Audit = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {arr.map((row) => (
             <TableRow
-              key={row.name}
+              key={row['0']}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell component="th" scope="row">
-                {row.name}
+                {row['0']}
               </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
+              <TableCell align="right">{row['1'].data.payee}</TableCell>
+              <TableCell align="right">{row['1'].data.description}</TableCell>
+              <TableCell align="right">{row['1'].data.date}</TableCell>
+              <TableCell align="right">{row['1'].data.amount}</TableCell>
             </TableRow>
           ))}
         </TableBody>
@@ -74,7 +78,7 @@ const Audit = () => {
     <TablePagination
         rowsPerPageOptions={[10, 25, 100]}
         component="div"
-        count={rows.length}
+        count={arr.length}
         rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={handleChangePage}
