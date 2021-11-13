@@ -46,11 +46,11 @@ const Audit = () => {
       <Table sx={{ minWidth: 1000, minHeight: 400 }} aria-label="simple table" >
         <TableHead>
           <TableRow>
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>
+            <TableCell>Transaction ID</TableCell>
+            <TableCell align="right">Payee/Depositer</TableCell>
+            <TableCell align="right">Description</TableCell>
+            <TableCell align="right">Date</TableCell>
+            <TableCell align="right">Amount</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
