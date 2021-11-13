@@ -1,0 +1,68 @@
+.expenseContainer{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    font-family: "Poppins",sans-serif;
+}
+.expform{
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+.exph1 {
+    font-size: calc(2rem + 2vw);
+    /* background: -webkit-linear-gradient(#118df0, #091227); */
+    background:linear-gradient(to right, #118df0 1%, #091227 90%);
+    background-clip: content-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.horizontal{
+    width: 18rem;
+}
+.explabel {
+    font-weight: bold;
+    display: block;
+    padding: 20px;
+  }
+  .oneline{
+      display: flex;
+      flex-direction: row;
+  }
+  .expinput {
+    font: inherit;
+    padding: 0.5rem;
+    margin: 0 20px;
+    border-radius: 2px;
+    border: 1px solid #ccc;
+    width: 17rem;
+    max-width: 100%;
+  }
+  .expbtn{
+    font-family: "Open Sans", sans-serif;
+      margin-top: 20px;
+    justify-self: center;
+    font-size: 19px;
+    padding: 12px 20px;
+    border: 1px;
+    background-color: #017fb1;
+    color: #fff;
+    border-radius: 3px;
+    transition: all 250ms ease-in-out;
+    cursor: pointer;
+  }
+  .expbtn:hover {
+    background-color: #0e5686;
+}
+.expbtn:focus {
+    outline: none;
+}
