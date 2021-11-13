@@ -59,7 +59,7 @@ const Expense = () => {
                     <div className="oneline">
                         <div className="form-field">
                             <label className="explabel" htmlFor="memo">Memo</label>
-                            <input className="expinput" type="text" onChange={(e)=>setMemo(e.target.value)} name="memo"/>
+                            <input className="expinput" type="text" onChange={(e)=>setMemo(e.target.value)} name="memo" placeholder="A brief message"/>
                         </div>
                         <div className="form-field">
                             <label className="explabel" htmlFor="Attachments">Attachments</label>

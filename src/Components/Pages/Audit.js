@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import { Typography } from '@mui/material';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -10,6 +9,7 @@ import Paper from '@mui/material/Paper';
 import TablePagination from '@mui/material/TablePagination';
 import { useSelector,useDispatch } from 'react-redux';
 import { logs } from '../../Actions/Actions';
+import './audit.css'
 
 const Audit = () => {
 
@@ -41,20 +41,22 @@ const Audit = () => {
 
 
     return (
-        <div className="mainAudit">
-         <Typography variant="h2" component="h2" style={{marginBottom:"3%", textAlign:'left'}}>
-            Audit Log
-        </Typography>
+      <div className="mainAudit">
+        <div>
+          <h2 className="auditHeading">Audit Log</h2>
+          <hr className="auditHr"/>
+        </div>
+         
             <Paper >
         <TableContainer component={Paper} >
       <Table sx={{ minWidth: 1000, minHeight: 400 }} aria-label="simple table" >
         <TableHead>
           <TableRow>
-            <TableCell>Transaction ID</TableCell>
-            <TableCell align="right">Payee/Depositer</TableCell>
-            <TableCell align="right">Description</TableCell>
-            <TableCell align="right">Date</TableCell>
-            <TableCell align="right">Amount</TableCell>
+            <TableCell ><div className="tbheading">Transaction ID</div></TableCell>
+            <TableCell ><div className="tbheading">Payee/Depositer</div></TableCell>
+            <TableCell ><div className="tbheading">Description</div></TableCell>
+            <TableCell ><div className="tbheading">Date</div></TableCell>
+            <TableCell ><div className="tbheading">Amount</div></TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -64,12 +66,14 @@ const Audit = () => {
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell component="th" scope="row">
+                <div className="tbdata">
                 {row['0']}
+                </div>
               </TableCell>
-              <TableCell align="right">{row['1'].data.payee}</TableCell>
-              <TableCell align="right">{row['1'].data.description}</TableCell>
-              <TableCell align="right">{row['1'].data.date}</TableCell>
-              <TableCell align="right">{row['1'].data.amount}</TableCell>
+              <TableCell align="left"><div className="tbdata">{row['1'].data.payee}</div></TableCell>
+              <TableCell align="right"><div className="tbdata">{row['1'].data.description}</div></TableCell>
+              <TableCell align="right"><div className="tbdata">{row['1'].data.date}</div></TableCell>
+              <TableCell align="right"><div className="tbdata">{row['1'].data.amount}</div></TableCell>
             </TableRow>
           ))}
         </TableBody>
